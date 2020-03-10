@@ -120,6 +120,7 @@ def driver(request):
             options = get_options(driver_class, request.config)
         if driver_class == 'ChromiumEdge':
             options = get_options(driver_class, request.config)
+            kwargs.update({'is_legacy': False})
         if driver_path is not None:
             kwargs['executable_path'] = driver_path
         if options is not None:
@@ -135,12 +136,10 @@ def get_options(driver_class, config):
     browser_args = config.option.args
     options = None
 
-    if driver_class == 'ChromiumEdge':
-        options = getattr(webdriver, 'EdgeOptions')()
-        options.use_chromium = True
-
     if browser_path or browser_args:
-        if not options:
+        if driver_class == 'ChromiumEdge':
+            options = getattr(webdriver, 'EdgeOptions')(False)
+        else:
             options = getattr(webdriver, '{}Options'.format(driver_class))()
         if driver_class == 'WebKitGTK':
             options.overlay_scrollbars_enabled = False
