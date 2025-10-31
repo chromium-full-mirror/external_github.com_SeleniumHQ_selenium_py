@@ -822,6 +822,7 @@ class WebDriver(BaseWebDriver):
                 values include: By.ID, By.NAME, By.XPATH, By.CSS_SELECTOR,
                 By.CLASS_NAME, By.TAG_NAME, By.LINK_TEXT, By.PARTIAL_LINK_TEXT,
                 or RelativeBy.
+            value: The locator value to use with the specified `by` strategy.
 
         Returns:
             The first matching WebElement found on the page.
@@ -847,6 +848,7 @@ class WebDriver(BaseWebDriver):
                 values include: By.ID, By.NAME, By.XPATH, By.CSS_SELECTOR,
                 By.CLASS_NAME, By.TAG_NAME, By.LINK_TEXT, By.PARTIAL_LINK_TEXT,
                 or RelativeBy.
+            value: The locator value to use with the specified `by` strategy.
 
         Returns:
             List of WebElements matching locator strategy found on the page.
@@ -943,6 +945,7 @@ class WebDriver(BaseWebDriver):
         Args:
             width: The width in pixels to set the window to.
             height: The height in pixels to set the window to.
+            windowHandle: The handle of the window to resize. Default is "current".
 
         Example:
             >>> driver.set_window_size(800, 600)
@@ -970,6 +973,7 @@ class WebDriver(BaseWebDriver):
         Args:
             x: The x-coordinate in pixels to set the window position.
             y: The y-coordinate in pixels to set the window position.
+            windowHandle: The handle of the window to reposition. Default is "current".
 
         Example:
             >>> driver.set_window_position(0, 0)
